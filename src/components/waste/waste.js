@@ -1,10 +1,10 @@
 import React from 'react';
-import FormDialog from './addItemModal';
+import AddItemModal from './addItemModal';
 import { getWasteList, addWaste, updateWaste } from '../../services/services';
 
 function Waste() {
   return( 
-  <FormDialog/>
+  <AddItemModal/>
   );
 }
 export default Waste;
