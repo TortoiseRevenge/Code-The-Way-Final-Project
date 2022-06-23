@@ -1,97 +1,71 @@
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import React, { useState } from 'react';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/system/Box';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import EditIcon from '@mui/icons-material/Edit';
+import Fab from '@mui/material/Fab';
+import Container from '@mui/system/Container';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
-import Link from '@mui/material/Link';
-import ROUTES from '../../constants/routes';
+import SendIcon from '@mui/icons-material/Send';
+import Typography from '@mui/material/Typography';
 
-export default function Home() {
-  const navigate = useNavigate();
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  p: 3,
+};
 
-  const onRepositoryClick = () => {
-    window.open(
-      'https://github.com/joeyschroeder/code-the-way-project-starter'
-    );
-  };
-
-  const onDemoSignUpFormClick = () => {
-    navigate(ROUTES.SIGN_UP);
-  };
-
-  const onStudentListClick = () => {
-    navigate(ROUTES.STUDENTS);
-  };
-  const onWasteListClick = () => {
-    navigate(ROUTES.WASTE);
-  };
+export default function BasicCard() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
-    <Container maxWidth="sm">
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
+    <Container>
+      <Button onClick={handleOpen}>Click to Open</Button>
+      <Modal
+        open={open}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
-        <Typography
-          align="center"
-          color="text.primary"
-          component="h1"
-          gutterBottom
-          variant="h2"
-          sx={{ mt: 5 }}
-        >
-          Welcome!
-        </Typography>
-        <Typography
-          align="center"
-          color="text.secondary"
-          paragraph
-          variant="h5"
-        >
-          This is a demo project using{' '}
-          <Link
-            color="primary"
-            href="https://reactjs.org/docs/getting-started.html"
-            target="_blank"
+        <Box sx={style}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
           >
-            React
-          </Link>
-          , and{' '}
-          <Link
-            color="primary"
-            href="https://mui.com/material-ui/getting-started"
-            target="_blank"
-          >
-            Material UI
-          </Link>
-          . It&apos;s designed to serve as a playground for students to
-          experiment with the tools.
-        </Typography>
-        <Stack
-          sx={{ pt: 4 }}
-          direction="row"
-          spacing={2}
-          justifyContent="center"
-        >
-          <Button variant="contained" onClick={onDemoSignUpFormClick}>
-            Demo Sign-Up Form
-          </Button>
-
-          <Button variant="outlined" onClick={onRepositoryClick}>
-            Repository
-          </Button>
-          <Button variant="contained" onClick={onStudentListClick}>
-            Students List
-          </Button>
-          <Button variant="contained" onClick={onWasteListClick}>
-            Waste List
-          </Button>
-        </Stack>
-      </Box>
+            <Typography sx={{ fontSize: 22 }} color="text.primary">
+              Item Name
+            </Typography>
+            <IconButton onClick={handleClose}>
+              <CloseIcon />
+            </IconButton>
+          </Stack>
+          <Stack direction="column">
+            <Typography> Owner:</Typography>
+            <Typography> City:</Typography>
+            <Typography> State:</Typography>
+            <Typography> Postal Code:</Typography>
+            <Typography> Date Accepted:</Typography>
+            <Typography> Date Returned:</Typography>
+          </Stack>
+          <Stack direction="row" spacing={2} justifyContent="space-around">
+            <Button size="small" variant="outlined" endIcon={<SendIcon />}>
+              Return
+            </Button>
+            <Button size="small" variant="contained" endIcon={<EditIcon />}>
+              Edit
+            </Button>
+          </Stack>
+        </Box>
+      </Modal>
     </Container>
   );
 }
