@@ -2,13 +2,41 @@ import React from 'react';
 import ItemList from './ItemList';
 import ItemInfoModal from './ItemInfoModal';
 import { getWasteList, addWaste, updateWaste } from '../../services/services';
+import { Page, Navbar, List, ListButton } from 'framework7-react';
 
-const numbers = [1, 2, 3, 4, 5];
+const cities = ['Milwaukee', 'Phoenix', 'San Fransisco', 'Dallas'];
+function Waste(props) {
+  return cities.map((city) => {
+    <a
+      onClick={(e) => {
+        e.preventDefault();
+        props.onChange(city);
+      }}
+    ></a>;
+  });
+}
 
-const updatedNums = numbers.map((number) => {
-  return <li>{number}</li>;
-});
+return (
+  <VersionPageHolder>
+    {
+      <Waste
+        onChange={(city) => {
+          setSelectedCity(city);
+        }}
+      />
+    }
+    <div>{renderElements(selectedCity)}</div>
+  </VersionPageHolder>
+);
 
-ReactDOM.render(<ul>{updatedNums}</ul>, document.getElementById('root'));
+// export default () => (
+//   <Page>
+//     <Navbar title="List Button" />
 
-export default Waste;
+//     <List inset>
+//       <ListButton title="List Button 1" />
+//       <ListButton title="List Button 2" />
+//       <ListButton title="List Button 3" />
+//     </List>
+//   </Page>
+//);
