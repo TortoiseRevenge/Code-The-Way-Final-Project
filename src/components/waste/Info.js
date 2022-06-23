@@ -4,12 +4,16 @@ import Box from '@mui/system/Box';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
-import Fab from '@mui/material/Fab';
 import Container from '@mui/system/Container';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
 import Typography from '@mui/material/Typography';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 const style = {
   position: 'absolute',
@@ -21,7 +25,21 @@ const style = {
   boxShadow: 24,
   p: 3,
 };
-
+function createData(
+  owner,
+  price,
+  city,
+  state,
+  postalCode,
+  dateAccepted,
+  dateReturned
+) {
+  return { owner, price, city, state, postalCode, dateAccepted, dateReturned };
+}
+const rows = [
+  createData('Jim', 3.9, 'Brookfield', 'WI', 53045, 'asdf', 'bads'),
+];
+console.log(rows.owner);
 export default function Info() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -48,14 +66,27 @@ export default function Info() {
               <CloseIcon />
             </IconButton>
           </Stack>
-          <Stack direction="column">
-            <Typography> Owner:</Typography>
-            <Typography> City:</Typography>
-            <Typography> State:</Typography>
-            <Typography> Postal Code:</Typography>
-            <Typography> Date Accepted:</Typography>
-            <Typography> Date Returned:</Typography>
-          </Stack>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableBody>
+                <TableRow>
+                  <TableCell align="right">Owner</TableCell>
+                </TableRow>
+                <TableRow
+                  key={rows.price}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell align="right">Price</TableCell>
+                  <TableCell align="right">123</TableCell>
+                </TableRow>
+                <TableCell align="right">{rows.city}</TableCell>
+                <TableCell align="right">{rows.state}</TableCell>
+                <TableCell align="right">{rows.postalCode}</TableCell>
+                <TableCell align="right">{rows.dateAccepted}</TableCell>
+                <TableCell align="right">{rows.dateReturned}</TableCell>
+              </TableBody>
+            </Table>
+          </TableContainer>
           <Stack direction="row" spacing={2} justifyContent="space-around">
             <Button size="small" variant="outlined">
               Return
