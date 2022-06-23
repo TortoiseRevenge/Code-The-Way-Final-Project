@@ -14,6 +14,17 @@ function waste() {
       dateReturned: 'June 23 2022',
       active: true,
     },
+    {
+      itemName: 'pencil',
+      owner: 'bob',
+      price: 10,
+      city: 'milwaukee',
+      state: 'WI',
+      postalCode: 53205,
+      dateAccepted: 'June 22 2022',
+      dateReturned: 'June 23 2022',
+      active: true,
+    },
   ];
   return (
     <div>
