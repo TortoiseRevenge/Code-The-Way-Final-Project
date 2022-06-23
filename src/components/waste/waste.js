@@ -1,6 +1,7 @@
 import React from 'react';
 import ItemList from './ItemList';
 import ItemInfoModal from './ItemInfoModal';
+import { getWasteList, addWaste, updateWaste } from '../../services/services';
 
 function waste() {
   const testArr = [
