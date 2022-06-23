@@ -15,32 +15,27 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 3,
-};
-function createData(
-  owner,
-  price,
-  city,
-  state,
-  postalCode,
-  dateAccepted,
-  dateReturned
-) {
-  return { owner, price, city, state, postalCode, dateAccepted, dateReturned };
-}
-const rows = [
-  createData('Jim', 3.9, 'Brookfield', 'WI', 53045, 'asdf', 'bads'),
-];
-console.log(rows.owner);
-export default function Info() {
+export default function Info(props) {
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 300,
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 3,
+  };
+
+  const person = {
+    owner: 'Jim',
+    price: 6.5,
+    city: 'brookfield',
+    state: 'WI',
+    postalCode: '567890',
+    dateAccepted: 'text',
+    dateReturned: 'text',
+  };
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -62,36 +57,55 @@ export default function Info() {
             <Typography sx={{ fontSize: 22 }} color="text.primary">
               Item Name
             </Typography>
-            <IconButton onClick={handleClose}>
+            <IconButton onClick={handleClose} size="small">
               <CloseIcon />
             </IconButton>
           </Stack>
+          <br />
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table
+              sx={{ minWidth: 200 }}
+              size="small"
+              aria-label="simple table"
+            >
               <TableBody>
                 <TableRow>
-                  <TableCell align="right">Owner</TableCell>
+                  <TableCell align="left">Owner</TableCell>
+                  <TableCell align="left">{person.owner}</TableCell>
                 </TableRow>
-                <TableRow
-                  key={rows.price}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell align="right">Price</TableCell>
-                  <TableCell align="right">123</TableCell>
+                <TableRow>
+                  <TableCell align="left">Price</TableCell>
+                  <TableCell align="left">{person.price}</TableCell>
                 </TableRow>
-                <TableCell align="right">{rows.city}</TableCell>
-                <TableCell align="right">{rows.state}</TableCell>
-                <TableCell align="right">{rows.postalCode}</TableCell>
-                <TableCell align="right">{rows.dateAccepted}</TableCell>
-                <TableCell align="right">{rows.dateReturned}</TableCell>
+                <TableRow>
+                  <TableCell align="left">City</TableCell>
+                  <TableCell align="left">{person.city}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left">State</TableCell>
+                  <TableCell align="left">{person.state}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left">Postal Code</TableCell>
+                  <TableCell align="left">{person.postalCode}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left">Date Accepted</TableCell>
+                  <TableCell align="left">{person.dateAccepted}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left">Date Returned</TableCell>
+                  <TableCell align="left">{person.dateReturned}</TableCell>
+                </TableRow>
               </TableBody>
             </Table>
           </TableContainer>
-          <Stack direction="row" spacing={2} justifyContent="space-around">
-            <Button size="small" variant="outlined">
+          <br />
+          <Stack direction="row" spacing={2.5} justifyContent="center">
+            <Button size="medium" variant="outlined">
               Return
             </Button>
-            <Button size="small" variant="contained" endIcon={<EditIcon />}>
+            <Button size="medium" variant="contained" endIcon={<EditIcon />}>
               Edit
             </Button>
           </Stack>
