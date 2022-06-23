@@ -1,5 +1,6 @@
 import React from 'react';
 import ItemList from './ItemList';
+import ItemInfoModal from './ItemInfoModal';
 
 function waste() {
   const testArr = [
@@ -29,6 +30,7 @@ function waste() {
   return (
     <div>
       <ItemList items={testArr}> </ItemList>
+      <ItemInfoModal />
     </div>
   );
 }
