@@ -7,12 +7,14 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Grid from '@mui/material/Grid';
+import ItemInfoModal from './TestModal';
 
 function ItemList(props) {
   const activeUsers = props.items.filter((item) => item.active === true);
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
+    <ItemInfoModal items={activeUsers} />;
     setExpanded(isExpanded ? panel : false);
   };
   if (activeUsers.length === 0) {

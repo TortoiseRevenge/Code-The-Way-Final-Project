@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemList from './ItemList';
-import ItemInfoModal from './ItemInfoModal';
+import ItemInfoModal from './TestModal';
 import { getWasteList, addWaste, updateWaste } from '../../services/services';
 
 function waste() {

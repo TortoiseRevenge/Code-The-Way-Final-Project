@@ -26,7 +26,7 @@ function ItemInfoModal(props) {
   };
   return (
     <div>
-      <Button onClick={handleOpen}>Open Child Modal</Button>
+      {handleOpen}
       <Modal
         hideBackdrop
         open={open}
