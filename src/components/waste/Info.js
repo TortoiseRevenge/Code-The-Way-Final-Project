@@ -28,6 +28,7 @@ export default function Info(props) {
   };
 
   const person = {
+    name: 'item',
     owner: 'Jim',
     price: 6.5,
     city: 'brookfield',
@@ -55,7 +56,7 @@ export default function Info(props) {
             alignItems="center"
           >
             <Typography sx={{ fontSize: 22 }} color="text.primary">
-              Item Name
+              {person.name}
             </Typography>
             <IconButton onClick={handleClose} size="small">
               <CloseIcon />
