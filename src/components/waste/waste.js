@@ -1,3 +1,5 @@
+import React from 'react';
+import { getWasteList, addWaste, updateWaste } from '../../services/services';
 import * as React from 'react';
 
 function Waste() {
