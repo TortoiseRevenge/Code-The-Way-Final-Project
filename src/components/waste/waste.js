@@ -35,42 +35,49 @@ function Waste(props) {
 
   return (
     <div>
-      Choose Your City
       <Grid container spacing={4} justifyContent="center">
-        <Grid item xs={4}>
-          <Card>
-            <CardContent>
-              <Typography sx={{ fontSize: 20 }} color="text.secondary">
-                All Items
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button value="" onClick={SendToList} size="small">
-                All Items
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        {cities.map((city) => (
+        <Grid item xs={12} />
+        <Grid container xs={9} spacing={2} justifyContent="center">
           <Grid item xs={4}>
             <Card>
               <CardContent>
                 <Typography sx={{ fontSize: 20 }} color="text.secondary">
-                  {city}
+                  All Items
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button value={city} onClick={SendToList} size="small">
-                  Items in {city}
+                <Button value="" onClick={SendToList} size="small">
+                  All Items
                 </Button>
               </CardActions>
             </Card>
           </Grid>
-        ))}
+          {cities.map((city) => (
+            <Grid item xs={4}>
+              <Card>
+                <CardContent>
+                  <Typography sx={{ fontSize: 20 }} color="text.secondary">
+                    {city}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button value={city} onClick={SendToList} size="small">
+                    Items in {city}
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+        <Grid item xs={12} />
+        <Grid item xs={9}>
+          <AddItemModal refresh={refreshItems} />
+        </Grid>
+        <Grid item xs={9}>
+          <ItemList items={filteredItems} />
+        </Grid>
       </Grid>
       <br />
-      <AddItemModal refresh={refreshItems} />
-      <ItemList items={filteredItems} />
     </div>
   );
 }

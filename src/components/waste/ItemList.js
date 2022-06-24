@@ -25,45 +25,47 @@ function ItemList(props) {
     <EditItemModal item={event.target.value} refresh={refresh} />;
   };
   return (
-    <Grid container spacing={2} justifyContent="center" rowspacing={2}>
-      <Grid item xs={5} spacing={1}>
-        <div>
+    <Grid item xs={12}>
+      <div>
+        <Grid container spacing={3} alignContent="center">
           {props.items.map((itemObject, index) => (
-            <Accordion
-              expanded={expanded === 'panel'.concat(index.toString())}
-              onChange={handleChange('panel'.concat(index.toString()))}
-            >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1bh-content"
-                id="panel1bh-header"
+            <Grid item xs={3}>
+              <Accordion
+                expanded={expanded === 'panel'.concat(index.toString())}
+                onChange={handleChange('panel'.concat(index.toString()))}
               >
-                <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                  {itemObject.name}
-                </Typography>
-                <Typography sx={{ color: 'text.secondary' }}>
-                  {itemObject.owner}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>Price: ${itemObject.price}</Typography>
-                <Typography>City: {itemObject.city}</Typography>
-                <Typography>State: {itemObject.state}</Typography>
-                <Typography>Postal Code: {itemObject.postalCode}</Typography>
-                <Typography>
-                  Date Accepted: {itemObject.dateAccepted}
-                </Typography>
-                <Typography>
-                  Date Returned: {itemObject.dateReturned}
-                </Typography>
-                <Button value={itemObject} onClick={editHandler}>
-                  Edit This Item
-                </Button>
-              </AccordionDetails>
-            </Accordion>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1bh-content"
+                  id="panel1bh-header"
+                >
+                  <Typography sx={{ width: '75%', flexShrink: 0 }}>
+                    {itemObject.name}
+                  </Typography>
+                  <Typography sx={{ color: 'text.secondary' }}>
+                    {itemObject.owner}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>Price: ${itemObject.price}</Typography>
+                  <Typography>City: {itemObject.city}</Typography>
+                  <Typography>State: {itemObject.state}</Typography>
+                  <Typography>Postal Code: {itemObject.postalCode}</Typography>
+                  <Typography>
+                    Date Accepted: {itemObject.dateAccepted}
+                  </Typography>
+                  <Typography>
+                    Date Returned: {itemObject.dateReturned}
+                  </Typography>
+                  <Button value={itemObject} onClick={editHandler}>
+                    Edit This Item
+                  </Button>
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
           ))}
-        </div>
-      </Grid>
+        </Grid>
+      </div>
     </Grid>
   );
 }
