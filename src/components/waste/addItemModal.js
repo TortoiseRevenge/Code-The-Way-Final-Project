@@ -28,8 +28,11 @@ function AddItemModal(props) {
       dateAccepted: enteredDateAccepted,
     };
     addWaste(newItem);
-    refresh();
+    refreshPage();
   };
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   return (
     <Box sx={{ mt: 3 }}>
