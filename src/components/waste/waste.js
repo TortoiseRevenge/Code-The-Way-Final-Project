@@ -1,6 +1,7 @@
 import React from 'react';
 import ItemList from './ItemList';
 import ItemInfoModal from './ItemInfoModal';
+import AddItemModal from './addItemModal';
 import { getWasteList, addWaste, updateWaste } from '../../services/services';
 
 const cities = ['Milwaukee', 'Phoenix', 'San Fransisco', 'Dallas'];
