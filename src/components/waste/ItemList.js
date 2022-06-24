@@ -8,9 +8,12 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Grid from '@mui/material/Grid';
+import PropTypes from 'prop-types';
 import ItemInfoModal from './TestModal';
+import EditItemModal from './editItemModal';
 
 function ItemList(props) {
+  const { refresh } = props;
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -19,7 +22,7 @@ function ItemList(props) {
   };
 
   const editHandler = (event) => {
-    // TODO
+    <EditItemModal item={event.target.value} refresh={refresh} />;
   };
   return (
     <Grid container spacing={2} justifyContent="center" rowspacing={2}>
@@ -65,3 +68,7 @@ function ItemList(props) {
   );
 }
 export default ItemList;
+
+ItemList.propTypes = {
+  refresh: PropTypes.func.isRequired,
+};

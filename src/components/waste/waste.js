@@ -5,19 +5,15 @@ import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import { useNavigate } from 'react-router-dom';
-import Info from './Info';
 import ItemList from './ItemList';
-import ItemInfoModal from './TestModal';
 import AddItemModal from './addItemModal';
-import { getWasteList, addWaste, updateWaste } from '../../services/services';
+import { getWasteList } from '../../services/services';
 
 function Waste(props) {
   const [cities, setCities] = useState([]);
   const [items, setItems] = useState([]);
   const [sortingCity, setSortingCity] = useState('');
   const SendToList = (event) => {
-    console.log(event.target.value);
     setSortingCity(event.target.value);
   };
   const refreshItems = async () => {
@@ -36,9 +32,45 @@ function Waste(props) {
     }
     return item.city === sortingCity;
   });
+
   return (
     <div>
-      <Info>Test</Info>
+      Choose Your City
+      <Grid container spacing={4} justifyContent="center">
+        <Grid item xs={4}>
+          <Card>
+            <CardContent>
+              <Typography sx={{ fontSize: 20 }} color="text.secondary">
+                All Items
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button value="" onClick={SendToList} size="small">
+                All Items
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
+        {cities.map((city) => (
+          <Grid item xs={4}>
+            <Card>
+              <CardContent>
+                <Typography sx={{ fontSize: 20 }} color="text.secondary">
+                  {city}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button value={city} onClick={SendToList} size="small">
+                  Items in {city}
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+      <br />
+      <AddItemModal refresh={refreshItems} />
+      <ItemList items={filteredItems} />
     </div>
   );
 }

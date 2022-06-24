@@ -1,36 +1,123 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import { PropaneSharp } from '@mui/icons-material';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import PropTypes from 'prop-types';
+import { getWasteList, addWaste, updateWaste } from '../../services/services';
 
-function AddItemModal() {
-  //   const [open, setOpen] = React.useState(false);
-
-  //   const handleClickOpen = () => {
-  //     setOpen(true);
-  //   };
-
-  //   const handleClose = () => {
-  //     setOpen(false);
-  // };
-  const [enteredItem, setEnteredItem] = useState('');
+function AddItemModal(props) {
+  const { refresh } = props;
   const [enteredOwner, setEnteredOwner] = useState('');
+  const [enteredName, setEnteredName] = useState('');
   const [enteredPrice, setEnteredPrice] = useState('');
   const [enteredCity, setEnteredCity] = useState('');
   const [enteredState, setEnteredState] = useState('');
-  const [enteredZip, setEnteredZip] = useState('');
-  function addItemHandler(event) {
-    setEnteredItem(event.target.value);
-    console.log(enteredItem);
-  }
-  return <div>Test</div>;
+  const [enteredPostalCode, setEnteredPostalCode] = useState('');
+  const [enteredDateAccepted, setEnteredDateAccepted] = useState('');
+
+  const addItemHandler = (event) => {
+    event.preventDefault();
+    const newItem = {
+      name: enteredName,
+      owner: enteredOwner,
+      price: enteredPrice,
+      city: enteredCity,
+      state: enteredState,
+      postalCode: enteredPostalCode,
+      dateAccepted: enteredDateAccepted,
+    };
+    addWaste(newItem);
+    refresh();
+  };
+
+  return (
+    <Box sx={{ mt: 3 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            label="Owner"
+            onChange={(event) => setEnteredOwner(event.target.value)}
+            required
+            value={enteredOwner}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            label="Name"
+            onChange={(event) => setEnteredName(event.target.value)}
+            required
+            value={enteredName}
+          />
+        </Grid>
+
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="Price"
+            onChange={(event) => setEnteredPrice(event.target.value)}
+            required
+            value={enteredPrice}
+          />
+        </Grid>
+
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="City"
+            onChange={(event) => setEnteredCity(event.target.value)}
+            required
+            value={enteredCity}
+          />
+        </Grid>
+
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="State"
+            onChange={(event) => setEnteredState(event.target.value)}
+            required
+            value={enteredState}
+          />
+        </Grid>
+
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="Postal Code"
+            onChange={(event) => setEnteredPostalCode(event.target.value)}
+            required
+            value={enteredPostalCode}
+          />
+        </Grid>
+
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="Date Accepted"
+            onChange={(event) => setEnteredDateAccepted(event.target.value)}
+            required
+            type="date"
+            value={enteredDateAccepted}
+          />
+        </Grid>
+      </Grid>
+      <Button
+        fullWidth
+        sx={{ mt: 3, mb: 2 }}
+        type="submit"
+        onClick={addItemHandler}
+        variant="contained"
+      >
+        Add Item
+      </Button>
+    </Box>
+  );
 }
 export default AddItemModal;
+
+AddItemModal.propTypes = {
+  refresh: PropTypes.func.isRequired,
+};
