@@ -1,4 +1,5 @@
 import React from 'react';
+import Info from './Info';
 import ItemList from './ItemList';
 import ItemInfoModal from './TestModal';
 import AddItemModal from './addItemModal';
