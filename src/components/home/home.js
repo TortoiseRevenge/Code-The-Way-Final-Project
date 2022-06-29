@@ -23,6 +23,9 @@ export default function Home() {
   const onStudentListClick = () => {
     navigate(ROUTES.STUDENTS);
   };
+  const onL2CClick = () => {
+    navigate(ROUTES.L2C);
+  };
 
   return (
     <Container maxWidth="sm">
@@ -83,6 +86,9 @@ export default function Home() {
           </Button>
           <Button variant="contained" onClick={onStudentListClick}>
             Students List
+          </Button>
+          <Button variant="contained" onClick={onL2CClick}>
+            L2C
           </Button>
         </Stack>
       </Box>
