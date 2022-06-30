@@ -20,12 +20,28 @@ export default function Lead2Change() {
         },
       ],
     },
+    {
+      id: 'e1',
+      firstName: 'Mrs',
+      lastName: 'Foe',
+      phoneNumber: '262-555-1235',
+      email: 'f@does.org',
+      students: [
+        {
+          id: 's2',
+          firstName: 'Jane',
+          lastName: 'Roe',
+          phoneNumber: 'Jane@roes.org',
+          email: '262-555-0123',
+        },
+      ],
+    },
   ];
   return (
     <div>
       <Grid container justifyContent="center" spacing={2}>
         <Grid item xs={8}>
-          <CoachesList Coaches={listofCoaches} />
+          <CoachesList rows={listofCoaches} />
         </Grid>
       </Grid>
     </div>
