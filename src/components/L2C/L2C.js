@@ -40,16 +40,14 @@ export default function Lead2Change() {
   ];
   return (
     <div>
+      <div>
+        <RegisterCoachModal />
+      </div>
       <Grid container justifyContent="center" spacing={2}>
         <Grid item xs={8}>
           <CoachesList rows={listofCoaches} />
         </Grid>
       </Grid>
-    </div>
-  );
-  return (
-    <div>
-      <RegisterCoachModal />
     </div>
   );
 }

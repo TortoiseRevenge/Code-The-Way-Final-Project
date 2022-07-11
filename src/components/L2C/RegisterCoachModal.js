@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid';
@@ -8,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { purple } from '@mui/material/colors';
 
 const style = {
   position: 'absolute',
@@ -19,11 +21,36 @@ const style = {
   boxShadow: 12,
   p: 2,
 };
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(purple[500]),
+  backgroundColor: '#2854A1',
+  '&:hover': {
+    backgroundColor: '#1F365E',
+  },
+}));
 
-export default function RegisterCoachModal() {
+export default function RegisterCoachModal(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const addCoach = () => newCoach(props);
+  function newCoach(first, last, emaill, phone) {
+    const coach = {
+      id: '',
+      coachFirstName: first,
+      coachLastName: last,
+      coachEmail: emaill,
+      coachPhoneNumber: phone,
+      students: {},
+    };
+    return console.log(coach);
+  }
+
   return (
     <div>
       <Button variant="contained" onClick={handleOpen}>
@@ -53,27 +80,39 @@ export default function RegisterCoachModal() {
             </Grid>
             <Grid item xs={6}>
               <TextField
+                value={firstName}
                 fullWidth
                 label="First Name"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                }}
               />
             </Grid>
 
             <Grid item xs={6}>
               <TextField
+                value={lastName}
                 fullWidth
                 label="Last Name"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                }}
               />
             </Grid>
             <Grid item xs={14}>
               <TextField
+                value={email}
                 fullWidth
                 label="Email"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </Grid>
             <Grid item xs={6}>
@@ -94,25 +133,25 @@ export default function RegisterCoachModal() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                value={phoneNumber}
+                type="number"
                 fullWidth
                 label="Phone Number"
                 variant="outlined"
                 size="small"
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                }}
               />
             </Grid>
             <Grid item xs={12}>
-              <Stack direction="row" spacing={2} justifyContent="center">
-                <Button
-                  variant="outlined"
-                  onClick={handleClose}
-                  style={{ minWidth: '100px' }}
-                >
-                  Close
-                </Button>
-                <Button variant="contained" style={{ minWidth: '100px' }}>
-                  Register
-                </Button>
-              </Stack>
+              <ColorButton
+                variant="contained"
+                fullWidth
+                onClick={addCoach(firstName, lastName, email, phoneNumber)}
+              >
+                Register
+              </ColorButton>
             </Grid>
           </Grid>
         </Box>
