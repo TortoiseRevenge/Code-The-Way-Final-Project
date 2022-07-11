@@ -88,6 +88,7 @@ function EnhancedTableHead(props) {
             </TableSortLabel>
           </TableCell>
         ))}
+        <TableCell padding="normal">Options</TableCell>
       </TableRow>
     </TableHead>
   );
