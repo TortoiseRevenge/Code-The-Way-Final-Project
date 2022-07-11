@@ -44,19 +44,19 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'lastName',
+    id: 'coachLastName',
     numeric: false,
     disablePadding: false,
     label: 'Name',
   },
   {
-    id: 'email',
+    id: 'coachEmail',
     numeric: false,
     disablePadding: false,
     label: 'Email',
   },
   {
-    id: 'phoneNumber',
+    id: 'coachPhoneNumber',
     numeric: false,
     disablePadding: false,
     label: 'Phone Number',
