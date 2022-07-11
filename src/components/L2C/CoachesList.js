@@ -146,7 +146,6 @@ export default function CoachesList(props) {
 
   return (
     <Box sx={{ width: '100%' }}>
-      Coaches
       <Paper sx={{ width: '100%', mb: 2 }}>
         <TableContainer>
           <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
@@ -167,7 +166,9 @@ export default function CoachesList(props) {
                       tabIndex={-1}
                       key={row.id}
                     >
-                      <TableCell>{row.lastName}</TableCell>
+                      <TableCell>
+                        {row.lastName}, {row.firstName}
+                      </TableCell>
                       <TableCell align="left">{row.email}</TableCell>
                       <TableCell align="left">{row.phoneNumber}</TableCell>
                       <TableCell>

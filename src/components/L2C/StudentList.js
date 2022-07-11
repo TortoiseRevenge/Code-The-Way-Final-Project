@@ -31,7 +31,7 @@ function StudentList(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>Student List</Button>
       <Modal
         open={open}
         onClose={handleClose}
