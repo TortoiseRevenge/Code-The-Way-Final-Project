@@ -15,11 +15,18 @@ export default function Lead2Change() {
         coachEmail: 'John@does.org',
         students: [
           {
-            id: 's1',
+            id: 'c1s1',
             studentFirstName: 'Jane',
             studentLastName: 'Roe',
             studentPhoneNumber: 'Jane@roes.org',
             studentEmail: '262-555-0123',
+          },
+          {
+            id: 'c1s2',
+            studentFirstName: 'Bob',
+            studentLastName: 'Johnson',
+            studentPhoneNumber: 'Johnson@bob.org',
+            studentEmail: '262-555-0124',
           },
         ],
       },
@@ -31,13 +38,21 @@ export default function Lead2Change() {
         coachEmail: 'f@does.org',
         students: [
           {
-            id: 's2',
+            id: 'c2s1',
             studentFirstName: 'Dane',
             studentLastName: 'Roe',
             studentPhoneNumber: 'Dane@roes.org',
             studentEmail: '262-555-0123',
           },
         ],
+      },
+      {
+        id: 'c3',
+        coachFirstName: 'John',
+        coachLastName: 'Johnson',
+        coachPhoneNumber: '262-555-1235',
+        coachEmail: 'J@j.org',
+        students: [],
       },
     ];
     setCoaches(listOfCoaches);
