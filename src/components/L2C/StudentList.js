@@ -123,13 +123,13 @@ function StudentList(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const handleRequestSort = (event, property) => {
+  const handleRequestSort = (property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
 
-  const handleClick = (event, name) => {
+  const handleClick = (name) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
 
@@ -149,7 +149,7 @@ function StudentList(props) {
     setSelected(newSelected);
   };
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (newPage) => {
     setPage(newPage);
   };
 

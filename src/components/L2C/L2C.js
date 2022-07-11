@@ -10,7 +10,7 @@ export default function Lead2Change() {
       {
         id: 'c1',
         coachFirstName: 'John',
-        coachLastName: 'Doe',
+        coachLastName: 'Zoe',
         coachPhoneNumber: '262-555-1234',
         coachEmail: 'John@does.org',
         students: [
@@ -79,7 +79,9 @@ export default function Lead2Change() {
         students: [],
       },
     ];
-    setCoaches(listOfCoaches);
+    setCoaches(
+      listOfCoaches.sort((a, b) => (a.coachLastName > b.coachLastName ? 1 : -1))
+    );
   };
 
   useEffect(() => {
