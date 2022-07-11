@@ -40,7 +40,7 @@ function StudentList(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            {coach.firstName} {coach.lastName}&#39;s Students
+            {coach.firstName} {coach.coachLastName}&#39;s Students
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <TableContainer>
@@ -56,10 +56,12 @@ function StudentList(props) {
                   {coach.students.map((student) => (
                     <TableRow key={coach.id}>
                       <TableCell>
-                        {student.lastName}, {student.firstName}
+                        {student.studentLastName}, {student.studentFirstName}
                       </TableCell>
-                      <TableCell align="left">{student.email}</TableCell>
-                      <TableCell align="left">{student.phoneNumber}</TableCell>
+                      <TableCell align="left">{student.studentEmail}</TableCell>
+                      <TableCell align="left">
+                        {student.studentPhoneNumber}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

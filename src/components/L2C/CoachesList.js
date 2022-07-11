@@ -167,10 +167,10 @@ export default function CoachesList(props) {
                       key={row.id}
                     >
                       <TableCell>
-                        {row.lastName}, {row.firstName}
+                        {row.coachLastName}, {row.coachFirstName}
                       </TableCell>
-                      <TableCell align="left">{row.email}</TableCell>
-                      <TableCell align="left">{row.phoneNumber}</TableCell>
+                      <TableCell align="left">{row.coachEmail}</TableCell>
+                      <TableCell align="left">{row.coachPhoneNumber}</TableCell>
                       <TableCell>
                         <StudentList coach={row} />
                       </TableCell>
