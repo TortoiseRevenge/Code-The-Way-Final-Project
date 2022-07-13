@@ -22,7 +22,7 @@ const style = {
   p: 2,
 };
 const ColorButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText(purple[500]),
+  color: theme.palette.getContrastText('#2854A1'),
   backgroundColor: '#2854A1',
   '&:hover': {
     backgroundColor: '#1F365E',
@@ -30,7 +30,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 export default function RegisterCoachModal(props) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -38,17 +38,23 @@ export default function RegisterCoachModal(props) {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const addCoach = () => newCoach(props);
-  function newCoach(first, last, emaill, phone) {
+  const [listofCoaches, setListofCoaches] = useState([]);
+  const list = {};
+  function newCoachHandler(first, last, emaill, phone, prevList) {
     const coach = {
-      id: '',
+      id: 'c',
       coachFirstName: first,
       coachLastName: last,
       coachEmail: emaill,
       coachPhoneNumber: phone,
-      students: {},
+      students: [],
     };
-    return console.log(coach);
+    console.log(coach);
+    // setListofCoaches([...prevList, coach]);
+    // setFirstName('');
+    // setLastName('');
+    // setPhoneNumber();
+    // setEmail('');
   }
 
   return (
@@ -148,7 +154,7 @@ export default function RegisterCoachModal(props) {
               <ColorButton
                 variant="contained"
                 fullWidth
-                onClick={addCoach(firstName, lastName, email, phoneNumber)}
+                onClick={console.log('works')}
               >
                 Register
               </ColorButton>
