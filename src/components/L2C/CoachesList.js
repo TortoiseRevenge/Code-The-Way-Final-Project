@@ -10,6 +10,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 import StudentList from './StudentList';
 import CoachDeletionModal from './CoachDeletionModal';
 
@@ -174,8 +175,17 @@ export default function CoachesList(props) {
                       <TableCell align="left">{row.coachEmail}</TableCell>
                       <TableCell align="left">{row.coachPhoneNumber}</TableCell>
                       <TableCell>
-                        <StudentList coach={row} />
-                        <CoachDeletionModal deleteFunction={deleteFunction} />
+                        <Grid container spacing={2}>
+                          <Grid item>
+                            <StudentList coach={row} />
+                          </Grid>
+                          <Grid item>
+                            <CoachDeletionModal
+                              deleteFunction={deleteFunction}
+                              id={row.id}
+                            />
+                          </Grid>
+                        </Grid>
                       </TableCell>
                     </TableRow>
                   );

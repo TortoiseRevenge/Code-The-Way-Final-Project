@@ -164,7 +164,9 @@ function StudentList(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Student List</Button>
+      <Button onClick={handleOpen} variant="contained">
+        Student List
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

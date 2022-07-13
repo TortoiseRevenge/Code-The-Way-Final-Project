@@ -90,8 +90,7 @@ export default function Lead2Change() {
   }, []);
 
   const deleteCoach = (id) => {
-    // TODO: API Integration
-    console.log(id);
+    setCoaches(coaches.filter((item) => item.id !== id));
   };
 
   return (
