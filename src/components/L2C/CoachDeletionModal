@@ -7,7 +7,7 @@ const DeleteConfirmation = ({ showModal, hideModal, confirmModal, id, type, mess
         <Modal.Header closeButton>
           <Modal.Title>Delete Confirmation</Modal.Title>
         </Modal.Header>
-        <Modal.Body><div>{message}</div></Modal.Body>
+        <Modal.Body><div>Are you sure you want to delete this Coach?</div></Modal.Body>
         <Modal.Footer>
           <Button variant="default" onClick={hideModal}>
             Cancel
