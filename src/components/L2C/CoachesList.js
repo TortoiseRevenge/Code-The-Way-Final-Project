@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import StudentList from './StudentList';
+import CoachDeletionModal from './CoachDeletionModal';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -101,7 +102,7 @@ EnhancedTableHead.propTypes = {
 };
 
 export default function CoachesList(props) {
-  const { rows } = props;
+  const { rows, deleteFunction } = props;
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
   const [selected, setSelected] = React.useState([]);
@@ -174,6 +175,7 @@ export default function CoachesList(props) {
                       <TableCell align="left">{row.coachPhoneNumber}</TableCell>
                       <TableCell>
                         <StudentList coach={row} />
+                        <CoachDeletionModal deleteFunction={deleteFunction} />
                       </TableCell>
                     </TableRow>
                   );
@@ -202,4 +204,5 @@ export default function CoachesList(props) {
 
 CoachesList.propTypes = {
   rows: PropTypes.array.isRequired,
+  deleteFunction: PropTypes.func.isRequired,
 };
