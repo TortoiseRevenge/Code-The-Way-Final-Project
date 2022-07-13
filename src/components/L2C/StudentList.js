@@ -23,11 +23,6 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  minWidth: '900px',
-  width: '50%',
-  bgcolor: 'background.paper',
-  boxShadow: 12,
-  p: 2,
 };
 
 function descendingComparator(a, b, orderBy) {
@@ -182,19 +177,23 @@ function StudentList(props) {
           <div>
             <Grid container>
               <Grid item sx={{ bgcolor: 'blue', color: 'white' }} xs={12}>
-                <Stack
-                  direction="row"
-                  alignItems="flex-end"
-                  spacing={31.5}
-                  justifyContent="space-between"
-                >
-                  <Typography variant="h5" component="h2">
-                    Register a Coach
-                  </Typography>
-                  <IconButton size="small" onClick={handleClose}>
-                    <CloseOutlinedIcon />
-                  </IconButton>
-                </Stack>
+                <Grid container>
+                  <Grid item xs={10} sx={{ margin: 1.5 }}>
+                    <Typography variant="h5" component="h2" align="center">
+                      Register a Coach
+                    </Typography>
+                  </Grid>
+                  <Grid item sx={{ margin: 1.5 }}>
+                    <IconButton
+                      align="right"
+                      size="medium"
+                      onClick={handleClose}
+                      sx={{ color: 'white' }}
+                    >
+                      <CloseOutlinedIcon />
+                    </IconButton>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
             <Paper sx={{ width: '100%', mb: 2 }}>
