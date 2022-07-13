@@ -88,11 +88,21 @@ export default function Lead2Change() {
   useEffect(() => {
     refreshCoaches();
   }, []);
-
+  const newCoach = (first, last, email, phone) => {
+    const coach = {
+      id: Date.now(), // TODO : Update to agreed ID creation method
+      coachFirstName: first,
+      coachLastName: last,
+      coachEmail: email,
+      coachPhoneNumber: phone,
+      students: [],
+    };
+    setCoaches([...coaches, coach]);
+  };
   return (
     <div>
       <div>
-        <RegisterCoachModal />
+        <RegisterCoachModal addFunction={newCoach} />
       </div>
       <Grid container justifyContent="center" spacing={2}>
         <Grid item xs={8}>

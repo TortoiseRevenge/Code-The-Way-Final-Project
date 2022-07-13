@@ -10,6 +10,7 @@ import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { purple } from '@mui/material/colors';
+import PropTypes from 'prop-types';
 
 const style = {
   position: 'absolute',
@@ -30,6 +31,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 export default function RegisterCoachModal(props) {
+  const { addFunction } = props;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -38,19 +40,10 @@ export default function RegisterCoachModal(props) {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const addCoach = () => newCoach(props);
-  function newCoach(first, last, emaill, phone) {
-    const coach = {
-      id: '',
-      coachFirstName: first,
-      coachLastName: last,
-      coachEmail: emaill,
-      coachPhoneNumber: phone,
-      students: {},
-    };
-    return console.log(coach);
-  }
-
+  const Register = () => {
+    handleClose();
+    addFunction(firstName, lastName, email, phoneNumber);
+  };
   return (
     <div>
       <Button variant="contained" onClick={handleOpen}>
@@ -63,7 +56,7 @@ export default function RegisterCoachModal(props) {
       >
         <Box sx={style}>
           <Grid container spacing={2}>
-            <Grid item={12}>
+            <Grid item xs={12}>
               <Stack
                 direction="row"
                 alignItems="flex-end"
@@ -148,7 +141,8 @@ export default function RegisterCoachModal(props) {
               <ColorButton
                 variant="contained"
                 fullWidth
-                onClick={addCoach(firstName, lastName, email, phoneNumber)}
+                onClick={Register}
+                value={(firstName, lastName, email, phoneNumber)}
               >
                 Register
               </ColorButton>
@@ -159,3 +153,7 @@ export default function RegisterCoachModal(props) {
     </div>
   );
 }
+
+RegisterCoachModal.propTypes = {
+  addFunction: PropTypes.func.isRequired,
+};
