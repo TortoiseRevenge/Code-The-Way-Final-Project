@@ -80,6 +80,7 @@ export default function Lead2Change() {
         students: [],
       },
     ];
+
     setCoaches(
       listOfCoaches.sort((a, b) => (a.coachLastName > b.coachLastName ? 1 : -1))
     );
@@ -99,6 +100,11 @@ export default function Lead2Change() {
     };
     setCoaches([...coaches, coach]);
   };
+
+  const deleteCoach = (id) => {
+    setCoaches(coaches.filter((item) => item.id !== id));
+  };
+
   return (
     <div>
       <Grid container justifyContent="center" spacing={2}>
@@ -108,7 +114,7 @@ export default function Lead2Change() {
               <RegisterCoachModal addFunction={newCoach} />
             </Grid>
             <Grid item xs={12}>
-              <CoachesList rows={coaches} />
+              <CoachesList rows={coaches} deleteFunction={deleteCoach}/>
             </Grid>
           </Grid>
         </Grid>
