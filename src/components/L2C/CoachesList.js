@@ -10,6 +10,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 import StudentList from './StudentList';
 
 function descendingComparator(a, b, orderBy) {
@@ -174,6 +175,7 @@ export default function CoachesList(props) {
                       <TableCell align="left">{row.coachPhoneNumber}</TableCell>
                       <TableCell>
                         <StudentList coach={row} />
+                        <Button>Deactivate</Button>
                       </TableCell>
                     </TableRow>
                   );
