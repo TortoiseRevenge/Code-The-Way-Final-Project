@@ -177,7 +177,8 @@ function StudentList(props) {
             <Grid container>
               <Grid item sx={{ bgcolor: '#004cbb', color: 'white' }} xs={12}>
                 <Grid container>
-                  <Grid item xs={10} sx={{ margin: 1.5 }}>
+                  <Grid item xs={2} />
+                  <Grid item xs={8} sx={{ margin: 2 }}>
                     <Typography variant="h5" component="h2" align="center">
                       {coach.coachFirstName} {coach.coachLastName}&#39;s
                       Students
