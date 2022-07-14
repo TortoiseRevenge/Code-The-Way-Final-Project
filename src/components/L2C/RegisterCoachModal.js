@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { purple } from '@mui/material/colors';
@@ -17,10 +16,10 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 500,
+  minWidth: '750px',
+  width: '50%',
   bgcolor: 'background.paper',
   boxShadow: 12,
-  p: 2,
 };
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -55,97 +54,108 @@ export default function RegisterCoachModal(props) {
         aria-labelledby="modal-modal-title"
       >
         <Box sx={style}>
-          <Grid container spacing={2}>
+          <Grid container>
             <Grid item xs={12}>
-              <Stack
-                direction="row"
-                alignItems="flex-end"
-                spacing={31.5}
-                justifyContent="space-between"
-              >
-                <Typography variant="h5" component="h2">
-                  Register a Coach
-                </Typography>
-                <IconButton size="small" onClick={handleClose}>
-                  <CloseOutlinedIcon />
-                </IconButton>
-              </Stack>
+              <Grid container>
+                <Grid item sx={{ bgcolor: '#004cbb', color: 'white' }} xs={12}>
+                  <Grid container>
+                    <Grid item xs={9} sx={{ margin: 1.5 }}>
+                      <Typography variant="h5" component="h2" align="center">
+                        Register
+                      </Typography>
+                    </Grid>
+                    <Grid item sx={{ margin: 1.5 }}>
+                      <IconButton
+                        align="right"
+                        size="medium"
+                        onClick={handleClose}
+                        sx={{ color: 'white' }}
+                      >
+                        <CloseOutlinedIcon />
+                      </IconButton>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <TextField
-                value={firstName}
-                fullWidth
-                label="First Name"
-                variant="outlined"
-                size="small"
-                onChange={(e) => {
-                  setFirstName(e.target.value);
-                }}
-              />
-            </Grid>
+            <Grid item xs={12}>
+              <Grid container spacing={1} sx={{ p: 2 }}>
+                <Grid item xs={6}>
+                  <TextField
+                    value={firstName}
+                    fullWidth
+                    label="First Name"
+                    variant="outlined"
+                    size="small"
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
+                  />
+                </Grid>
 
-            <Grid item xs={6}>
-              <TextField
-                value={lastName}
-                fullWidth
-                label="Last Name"
-                variant="outlined"
-                size="small"
-                onChange={(e) => {
-                  setLastName(e.target.value);
-                }}
-              />
-            </Grid>
-            <Grid item xs={14}>
-              <TextField
-                value={email}
-                fullWidth
-                label="Email"
-                variant="outlined"
-                size="small"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                fullWidth
-                label="Password"
-                variant="outlined"
-                size="small"
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                fullWidth
-                label="Confirm Password"
-                variant="outlined"
-                size="small"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                value={phoneNumber}
-                type="number"
-                fullWidth
-                label="Phone Number"
-                variant="outlined"
-                size="small"
-                onChange={(e) => {
-                  setPhoneNumber(e.target.value);
-                }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <ColorButton
-                variant="contained"
-                fullWidth
-                onClick={Register}
-                value={(firstName, lastName, email, phoneNumber)}
-              >
-                Register
-              </ColorButton>
+                <Grid item xs={6}>
+                  <TextField
+                    value={lastName}
+                    fullWidth
+                    label="Last Name"
+                    variant="outlined"
+                    size="small"
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={14}>
+                  <TextField
+                    value={email}
+                    fullWidth
+                    label="Email"
+                    variant="outlined"
+                    size="small"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    fullWidth
+                    label="Password"
+                    variant="outlined"
+                    size="small"
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    fullWidth
+                    label="Confirm Password"
+                    variant="outlined"
+                    size="small"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    value={phoneNumber}
+                    fullWidth
+                    label="Phone Number"
+                    variant="outlined"
+                    size="small"
+                    onChange={(e) => {
+                      setPhoneNumber(e.target.value);
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <ColorButton
+                    variant="contained"
+                    fullWidth
+                    onClick={Register}
+                    value={(firstName, lastName, email, phoneNumber)}
+                  >
+                    Register
+                  </ColorButton>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Box>

@@ -16,7 +16,6 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import Stack from '@mui/material/Stack';
 
 const style = {
   position: 'absolute',
@@ -176,11 +175,12 @@ function StudentList(props) {
         <Box sx={style}>
           <div>
             <Grid container>
-              <Grid item sx={{ bgcolor: 'blue', color: 'white' }} xs={12}>
+              <Grid item sx={{ bgcolor: '#004cbb', color: 'white' }} xs={12}>
                 <Grid container>
                   <Grid item xs={10} sx={{ margin: 1.5 }}>
                     <Typography variant="h5" component="h2" align="center">
-                      Register a Coach
+                      {coach.coachFirstName} {coach.coachLastName}&#39;s
+                      Students
                     </Typography>
                   </Grid>
                   <Grid item sx={{ margin: 1.5 }}>
