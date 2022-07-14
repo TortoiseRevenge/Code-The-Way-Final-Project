@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -21,24 +21,30 @@ const style = {
   boxShadow: 12,
 };
 
-export default function RegisterCoachModal(props) {
-  const { addFunction } = props;
+export default function EditCoachModal(props) {
+  const { coach } = props;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [enteredFirstName, setEnteredFirstName] = React.useState(
+    coach.coachFirstName
+  );
+  const [enteredLastName, setEnteredLastName] = React.useState(
+    coach.coachLastName
+  );
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const Register = () => {
+  const [enteredPhoneNumber, setEnteredPhoneNumber] = React.useState(
+    coach.coachPhoneNumber
+  );
+  const [enteredEmail, setEnteredEmail] = React.useState(coach.coachEmail);
+  const Edit = () => {
     handleClose();
-    addFunction(firstName, lastName, email, phoneNumber);
+    // TODO: API Integration
   };
   return (
     <div>
       <Button variant="contained" onClick={handleOpen}>
-        + Register
+        Edit
       </Button>
       <Modal
         open={open}
@@ -52,7 +58,7 @@ export default function RegisterCoachModal(props) {
                 <Grid item xs={2} />
                 <Grid item xs={8} sx={{ margin: 2 }}>
                   <Typography variant="h5" component="h2" align="center">
-                    Register
+                    Edit {coach.coachFirstName} {coach.coachLastName}
                   </Typography>
                 </Grid>
                 <Grid item sx={{ margin: 1.5 }}>
@@ -73,38 +79,38 @@ export default function RegisterCoachModal(props) {
               <Grid container spacing={1} sx={{ p: 2 }} justifyContent="center">
                 <Grid item xs={6}>
                   <TextField
-                    value={firstName}
+                    value={enteredFirstName}
                     fullWidth
                     label="First Name"
                     variant="outlined"
                     size="small"
                     onChange={(e) => {
-                      setFirstName(e.target.value);
+                      setEnteredFirstName(e.target.value);
                     }}
                   />
                 </Grid>
 
                 <Grid item xs={6}>
                   <TextField
-                    value={lastName}
+                    value={enteredLastName}
                     fullWidth
                     label="Last Name"
                     variant="outlined"
                     size="small"
                     onChange={(e) => {
-                      setLastName(e.target.value);
+                      setEnteredLastName(e.target.value);
                     }}
                   />
                 </Grid>
                 <Grid item xs={14}>
                   <TextField
-                    value={email}
+                    value={enteredEmail}
                     fullWidth
                     label="Email"
                     variant="outlined"
                     size="small"
                     onChange={(e) => {
-                      setEmail(e.target.value);
+                      setEnteredEmail(e.target.value);
                     }}
                   />
                 </Grid>
@@ -126,24 +132,19 @@ export default function RegisterCoachModal(props) {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    value={phoneNumber}
+                    value={enteredPhoneNumber}
                     fullWidth
                     label="Phone Number"
                     variant="outlined"
                     size="small"
                     onChange={(e) => {
-                      setPhoneNumber(e.target.value);
+                      setEnteredPhoneNumber(e.target.value);
                     }}
                   />
                 </Grid>
-                <Grid item xs={2}>
-                  <ColorButton
-                    variant="contained"
-                    fullWidth
-                    onClick={Register}
-                    value={(firstName, lastName, email, phoneNumber)}
-                  >
-                    Register
+                <Grid item xs={3}>
+                  <ColorButton variant="contained" fullWidth onClick={Edit}>
+                    Confirm Changes
                   </ColorButton>
                 </Grid>
                 <Grid item xs={2}>
@@ -164,6 +165,6 @@ export default function RegisterCoachModal(props) {
   );
 }
 
-RegisterCoachModal.propTypes = {
-  addFunction: PropTypes.func.isRequired,
+EditCoachModal.propTypes = {
+  coach: PropTypes.object.isRequired,
 };

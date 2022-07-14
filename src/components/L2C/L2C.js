@@ -80,6 +80,7 @@ export default function Lead2Change() {
         students: [],
       },
     ];
+
     setCoaches(
       listOfCoaches.sort((a, b) => (a.coachLastName > b.coachLastName ? 1 : -1))
     );
@@ -88,15 +89,34 @@ export default function Lead2Change() {
   useEffect(() => {
     refreshCoaches();
   }, []);
+  const newCoach = (first, last, email, phone) => {
+    const coach = {
+      id: Date.now(), // TODO : Update to agreed ID creation method
+      coachFirstName: first,
+      coachLastName: last,
+      coachEmail: email,
+      coachPhoneNumber: phone,
+      students: [],
+    };
+    setCoaches([...coaches, coach]);
+  };
+
+  const deleteCoach = (id) => {
+    setCoaches(coaches.filter((item) => item.id !== id));
+  };
 
   return (
     <div>
-      <div>
-        <RegisterCoachModal />
-      </div>
       <Grid container justifyContent="center" spacing={2}>
         <Grid item xs={8}>
-          <CoachesList rows={coaches} />
+          <Grid container justifyContent="right" spacing={1}>
+            <Grid item>
+              <RegisterCoachModal addFunction={newCoach} />
+            </Grid>
+            <Grid item xs={12}>
+              <CoachesList rows={coaches} deleteFunction={deleteCoach} />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>
