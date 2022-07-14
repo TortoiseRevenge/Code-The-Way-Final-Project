@@ -12,6 +12,7 @@ import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import StudentList from './StudentList';
+import AlertDialog from './InactivationModal';
 import CoachDeletionModal from './CoachDeletionModal';
 
 function descendingComparator(a, b, orderBy) {
@@ -184,6 +185,9 @@ export default function CoachesList(props) {
                               deleteFunction={deleteFunction}
                               id={row.id}
                             />
+                          </Grid>
+                          <Grid item>
+                                                  <AlertDialog />
                           </Grid>
                         </Grid>
                       </TableCell>
