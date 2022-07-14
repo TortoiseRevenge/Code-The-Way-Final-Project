@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import CoachesList from './CoachesList';
 
+<header align="center">Coaches</header>;
+
 export default function Lead2Change() {
   const [coaches, setCoaches] = useState([]);
   const refreshCoaches = async () => {
