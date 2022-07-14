@@ -114,7 +114,7 @@ export default function Lead2Change() {
               <RegisterCoachModal addFunction={newCoach} />
             </Grid>
             <Grid item xs={12}>
-              <CoachesList rows={coaches} deleteFunction={deleteCoach}/>
+              <CoachesList rows={coaches} deleteFunction={deleteCoach} />
             </Grid>
           </Grid>
         </Grid>
