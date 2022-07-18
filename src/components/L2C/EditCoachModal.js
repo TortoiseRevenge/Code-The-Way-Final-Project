@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import PropTypes from 'prop-types';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import ColorButton from './ColoredButton';
 
 const style = {
@@ -43,9 +44,9 @@ export default function EditCoachModal(props) {
   };
   return (
     <div>
-      <Button variant="contained" onClick={handleOpen}>
-        Edit
-      </Button>
+      <IconButton variant="contained" size="small" onClick={handleOpen}>
+        <EditRoundedIcon />
+      </IconButton>
       <Modal
         open={open}
         onClose={handleClose}
